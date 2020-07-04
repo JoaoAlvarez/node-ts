@@ -22,7 +22,7 @@ export interface IUser extends Document{
 const UserSchema = new Schema({
   email: {
     type: String,
-    required: [true, '{PATH} da turma é um campo obrigatório'],
+    required: [true, '{PATH} do usuario é um campo obrigatório'],
     min: 5,
     lowercase: true,
     unique: true,
@@ -30,24 +30,24 @@ const UserSchema = new Schema({
   },
   userName: {
     type: String,
-    required: [true, '{PATH} da turma é um campo obrigatório'],
+    required: [true, '{PATH} do usuario é um campo obrigatório'],
     min: 5,
     trim: true,
     unique: true
   },
   fistName: {
     type: String,
-    required: [true, '{PATH} da turma é um campo obrigatório'],
+    required: [true, '{PATH} do usuario é um campo obrigatório'],
     min: 5,
     trim: true
   },
   lastName: {
     type: String,
-    required: [true, '{PATH} da turma é um campo obrigatório'],
+    required: [true, '{PATH} do usuario é um campo obrigatório'],
     min: 5,
     trim: true
   },
-  password: { type: String, required: [true, '{PATH} da turma é um campo obrigatório'] },
+  password: { type: String, required: [true, '{PATH} do usuario é um campo obrigatório'] },
   lastLogin: Date,
   salt: String,
   token: String
