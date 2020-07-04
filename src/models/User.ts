@@ -17,6 +17,13 @@ const UserSchema = new Schema({
     unique: true,
     trim: true
   },
+  userName: {
+    type: String,
+    required: true,
+    min: 5,
+    trim: true,
+    unique: true
+  },
   fistName: {
     type: String,
     required: true,

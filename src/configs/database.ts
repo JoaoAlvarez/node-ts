@@ -4,7 +4,7 @@ import Logger from '../middlewares/logger'
 const LOG = new Logger('DataBase')
 class DataBase {
   public async conectarMongoDB (app): Promise<void> {
-    console.log('express.conn', app.conn)
+    LOG.logInfo('express.conn: ' + app.conn)
     // app.conn = new Promise((resolve, reject) => {
     if (app.conn && app.conn.db && app.conn.db.serverConfig &&
         app.conn.db.serverConfig.isConnected()) {
@@ -32,7 +32,6 @@ class DataBase {
       })
       .catch(err => LOG.logError(err))
     // })
-    LOG.logInfo('Conectado ao banco de dados')
   }
 }
 

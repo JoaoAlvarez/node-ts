@@ -5,8 +5,9 @@ import Logger from '../middlewares/logger'
 const LOG = new Logger('AuthController')
 class AuthController {
   public async signUp (req: Request, res: Response): Promise<Response> {
-    LOG.logInfo('inicio do metodo signUp')
-    return res.json({ message: 'teste' })
+    const body = req.body
+    LOG.logInfo(body)
+    return res.json({ message: body })
   }
 
   public async signIn (req: Request, res: Response): Promise<Response> {
