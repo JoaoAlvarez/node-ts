@@ -5,7 +5,7 @@ import Logger from '../middlewares/logger'
 const LOG = new Logger('AuthController')
 class AuthController {
   public async signUp (req: Request, res: Response): Promise<Response> {
-    const body = req.body
+    const { body } = req
     LOG.logInfo(body)
     return res.json({ message: body })
   }

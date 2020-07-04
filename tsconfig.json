@@ -31,11 +31,14 @@
         "./src/routes/*"
       ],
       "@exceptions/*": [
-        ".src/exceptions/exception"
+        "./src/exceptions/exception"
       ],
       "@logger": [
-        ".src/middlewares/logger"
+        "./src/middlewares/logger"
       ],
     }
-  }
+  },
+  "include": [
+    "src/**/*"
+  ]
 }
