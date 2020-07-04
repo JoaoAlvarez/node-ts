@@ -50,9 +50,13 @@ class AuthController {
 
   public async perfil (req: Request, res: Response, next: NextFunction): Promise<Response> {
     try {
-      const users = await UserSchema.find()
+      let user = await UserSchema.findById(req.user.id)
+      user = user.toObject()
 
-      return res.json(users)
+      delete user.password
+      delete user.salt
+      delete user.token
+      return res.json(user)
     } catch (error) {
       LOG.logError(error)
       next(error)
