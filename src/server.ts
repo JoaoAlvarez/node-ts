@@ -1,4 +1,5 @@
 import app from './app'
+import 'dotenv/config'
 
-console.log('Started')
-app.listen(3333)
+app.listen(process.env.PORT)
+console.log('🚀🚀🚀 Sevrer started on port', process.env.PORT)

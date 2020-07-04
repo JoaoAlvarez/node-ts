@@ -1,8 +1,11 @@
 import { Router } from 'express'
-import UserController from './controllers/UserController'
+import authRoutes from './routes/auth'
+import usersRoute from './routes/user-routes'
 
-const routes = Router()
+const router = Router()
 
-routes.get('/users', UserController.index)
+router.get('/api', (req, res) => res.json(new Date()))
+router.use('/api/auth', authRoutes)
+router.use('/api/user', usersRoute)
 
-export default routes
+export default router
