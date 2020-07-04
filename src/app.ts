@@ -3,12 +3,13 @@ import cors from 'cors'
 
 import routes from './routes'
 import 'dotenv/config'
-import morgan from 'morgan'
 import DataBase from './configs/database'
 import Logger from './middlewares/logger'
 
 import notFound from './middlewares/not-found'
 import serverError from './middlewares/server-error'
+import bodyParser from 'body-parser'
+import { configuration } from './configs/jwt-configuration'
 
 const LOG = new Logger('App')
 class App {
@@ -18,17 +19,15 @@ class App {
     LOG.logInfo('Iniciando app...')
     this.express = express()
 
-    this.routes()
     this.middlewares()
+    this.routes()
     this.database()
   }
 
   private middlewares (): void {
-    this.express.use(express.json())
+    bodyParser.json({ limit: '50mb' })
+    this.express.use(bodyParser.json())
     this.express.use(cors())
-    this.express.use(morgan('dev'))
-    this.express.use(notFound)
-    this.express.use(serverError)
   }
 
   private database (): void {
@@ -36,7 +35,15 @@ class App {
   }
 
   private routes (): void {
-    this.express.use(routes)
+    this.express.use('/', configuration.unless({
+      path: [
+        '/api',
+        '/api/auth/signUp',
+        '/api/auth/signIn'
+      ]
+    }), routes)
+    this.express.use(notFound)
+    this.express.use(serverError)
   }
 }
 

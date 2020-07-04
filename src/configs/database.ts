@@ -24,7 +24,8 @@ class DataBase {
       poolSize: 2,
       bufferMaxEntries: 0,
       bufferCommands: false,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useCreateIndex: true
     })
       .then(() => {
         LOG.logInfo('Conectado a base de dados')

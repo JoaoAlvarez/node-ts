@@ -23,7 +23,7 @@ const getKnownError = (error) => {
     InvalidSession: new InvalidSession(error),
     InvalidFields: new InvalidFields(error)
   }
-  return knownErrors[currentError] || error
+  return knownErrors[currentError.name] || error
 }
 
 export {
