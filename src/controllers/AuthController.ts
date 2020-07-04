@@ -28,7 +28,6 @@ class AuthController {
         throw new InvalidCredentials()
       }
 
-      console.log('user:', user)
       const isValidPassword = await user.comparePassword(password)
 
       if (!isValidPassword) {

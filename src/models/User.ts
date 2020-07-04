@@ -59,13 +59,12 @@ UserSchema.methods.fullName = function (): string {
   return this.fistName + ' ' + this.lastName
 }
 
-UserSchema.methods.comparePassword = async (candidatePassword: string) => {
-  console.log(this.default.salt)
-  const hash = crypto.pbkdf2Sync(candidatePassword || '', this.default.salt, 10000, 512, 'sha512').toString('hex')
-  return this.default.password === hash
+UserSchema.methods.comparePassword = function (candidatePassword: string) {
+  const hash = crypto.pbkdf2Sync(candidatePassword || '', this.salt, 10000, 512, 'sha512').toString('hex')
+  return this.password === hash
 }
 
-UserSchema.methods.generateToken = async () => {
+UserSchema.methods.generateToken = async function () {
   this.lastLogin = new Date()
 
   const obj = {
