@@ -12,15 +12,16 @@ const getKnownError = (error) => {
   if (!currentError || !currentError.name) { currentError = { name: 'InternalServerError' } }
 
   const knownErrors = {
-    JsonWebTokenError: new Unauthorized(error),
-    TokenExpiredError: new InvalidSession(error),
-    ValidationError: new InvalidFields(error),
-    InternalServerError: new InternalServerError(error),
-    AlreadyExists: new AlreadyExists(error),
-    InvalidCredentials: new InvalidCredentials(error),
-    ResourceNotFound: new ResourceNotFound(error),
-    Unauthorized: new Unauthorized(error),
-    InvalidSession: new InvalidSession(error),
+    JsonWebTokenError: new Unauthorized(error.message),
+    TokenExpiredError: new InvalidSession(error.message),
+    ValidationError: new InvalidFields(error.message),
+    InternalServerError: new InternalServerError(error.message),
+    AlreadyExists: new AlreadyExists(error.message),
+    InvalidCredentials: new InvalidCredentials(error.message),
+    ResourceNotFound: new ResourceNotFound(error.message),
+    Unauthorized: new Unauthorized(error.message),
+    UnauthorizedError: new Unauthorized(error.message),
+    InvalidSession: new InvalidSession(error.message),
     InvalidFields: new InvalidFields(error)
   }
   return knownErrors[currentError.name] || error

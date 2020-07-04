@@ -36,6 +36,11 @@ class AuthController {
 
       user = await user.generateToken()
 
+      user = user.toObject()
+
+      delete user.password
+      delete user.salt
+
       return res.json(user)
     } catch (error) {
       LOG.logError(error)
