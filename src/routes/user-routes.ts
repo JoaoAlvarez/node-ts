@@ -4,6 +4,6 @@ import UserController from '../controllers/UserController'
 
 const usersRouter = Router()
 
-usersRouter.get('/', UserController.index)
+usersRouter.put('/update', UserController.update)
 
 export default usersRouter
